@@ -57,7 +57,33 @@
       height: 290px;
     }
     .map {
+      position: relative;
       width: 1240px;
+      padding: 60px 20px 0px 20px;
+      .tj{
+        position: absolute;
+        top:80px;
+        left: 50px;
+      }
+      .total{
+        margin: 5px 0px;
+        padding: 0px 10px;
+        box-sizing: border-box;
+        width: 216px;
+        height: 50px;
+        line-height: 50px;
+        display: flex;
+        justify-content: space-between;
+        background: url("./../../res/total.png");
+        span{
+          line-height: 50px;
+          color: #fff;
+          font-size: 18px;
+          b{
+            color: #ffff00;
+          }
+        }
+      }
     }
   }
   .statistic{

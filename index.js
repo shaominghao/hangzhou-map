@@ -101,37 +101,32 @@ chart3.setOption({
         trigger: 'item',
         formatter: "{a} <br/>{b} : {c} ({d}%)"
     },
-    toolbox: {
-        show: true,
-        feature: {
-            mark: {show: true},
-            dataView: {show: true, readOnly: false},
-            magicType: {
-                show: true,
-                type: ['pie', 'funnel']
-            },
-            restore: {show: true},
-            saveAsImage: {show: true}
-        }
-    },
+    color: ['rgb(254,67,101)','rgb(249,205,173)','rgb(200,200,169)','rgb(131,175,155)'],
     series: [
         {
             name:'面积模式',
             type:'pie',
-            radius : [30, 110],
-            center : ['50%', 200],
+            radius : [30, 80],
+            center : ['50%', '60%'],
             roseType : 'area',
-            x: '50%',               // for funnel
-            max: 100,                // for funnel
-            sort : 'ascending',     // for funnel
             data:[
-                {value:20, name:'A'},
-                {value:70, name:'B'},
-                {value:90, name:'C'}
-            ]
+                {value:50, name:'A类'},
+                {value:70, name:'B类'},
+                {value:90, name:'C类'}
+            ],
+            itemStyle: {
+                normal: {
+                    label: {
+                        show: true,
+                        formatter: "{b} \n{c}万 \n{d}%"
+                    },
+                    labelLine: {
+                        show: true
+                    }
+                },
+            }
         }
     ]
-
 });
 
 //查询情况

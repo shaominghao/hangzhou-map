@@ -18,11 +18,19 @@ chart2.setOption({
         show: true,
         text: "重点人群",
         x: 'center',
+        padding:[30,0,0,10],
         textStyle: {
             fontSize: 24,
             fontWeight: 'bolder',
             color: '#fff'
         }
+    },
+    //调整坐标轴的位置
+    grid:{
+        x:'60px',
+        y:'80px',
+        x2:'60px',
+        y2:'30px'
     },
     xAxis: [
         {
@@ -37,23 +45,41 @@ chart2.setOption({
             },
             splitNumber: 5,
             max: 25,
-            name: '万',
             nameTextStyle: {
                 color: "#fff"
+            },
+            axisLabel : {
+                formatter: '{value} 万',
+                textStyle:{
+                    color:'#fff'
+                }
             }
         }
     ],
     yAxis: [
         {
             type: 'category',
-            data: ['公务员', '律师', '教师', '医护']
+            data: ['公务员', '律师', '教师', '医护'],
+            axisLabel : {
+                textStyle:{
+                    color:'#fff'
+                }
+            }
         }
     ],
     series: [
         {
             name: '2011年',
             type: 'bar',
-            data: [1, 7, 21, 20]
+            data: [1, 7, 21, 20],
+            itemStyle:{
+                barBorderColor:'#fff',
+                barBorderWidth:1,
+                normal:{
+                    color:'red'
+                }
+            },
+            barWidth: 10
         }
     ]
 });
@@ -62,8 +88,14 @@ chart2.setOption({
 var chart3 = echarts.init(document.getElementById('ABC'));
 chart3.setOption({
     title: {
-        text: '南丁格尔玫瑰图',
-        x: 'center'
+        text: 'ABC三类',
+        x: 'center',
+        padding:[30,0,0,10],
+        textStyle: {
+            fontSize: 24,
+            fontWeight: 'bolder',
+            color: '#fff'
+        }
     },
     tooltip: {
         trigger: 'item',
@@ -84,18 +116,18 @@ chart3.setOption({
     },
     series: [
         {
-            name: '面积模式',
-            type: 'pie',
-            radius: [30, 110],
-            center: ['50%', 200],
-            roseType: 'area',
-            x: '100%',               // for funnel
-            max: 60,                // for funnel
-            sort: 'ascending',     // for funnel
-            data: [
-                {value: 55, name: 'A'},
-                {value: 35, name: 'B'},
-                {value: 10, name: 'C'}
+            name:'面积模式',
+            type:'pie',
+            radius : [30, 110],
+            center : ['50%', 200],
+            roseType : 'area',
+            x: '50%',               // for funnel
+            max: 100,                // for funnel
+            sort : 'ascending',     // for funnel
+            data:[
+                {value:20, name:'A'},
+                {value:70, name:'B'},
+                {value:90, name:'C'}
             ]
         }
     ]

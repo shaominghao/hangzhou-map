@@ -14,3 +14,4 @@ npm-debug.log
 examples/dist/
 dist/
 doc/
+*.jpg

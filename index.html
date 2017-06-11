@@ -3,9 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <title>杭州地图</title>
+    <link rel="stylesheet" href="./src/styles/base.css">
+    <link rel="stylesheet" href="./src/styles/index.css">
 </head>
 <body>
-    <div class="hz" id="main" style="height: 500px"></div>
+    <div class="m-doc">
+        <img src="./res/bg.png" width="1920" height="1080" alt="">
+        <header>
+            <div class="userinfo">用户名：中心管理员|用户部门：系统管理部</div>
+            <div class="topic">杭州市公共信用信息平台</div>
+            <div class="opt">
+                <a href="">进入平台</a>|<a href="">异议处理</a>|<a href="">联合惩戒</a>
+                <a href="">退出</a>
+            </div>
+        </header>
+        <session class="main">
+            <div class="slide">
+                <div class="time">
+                    <div class="week">星期一</div>
+                    <div class="hour">09:00:00</div>
+                </div>
+                <div class="tac tac1">
+                    <div class="title">红黑名单</div>
+                    <div class="date"></div>
+                </div>
+                <div class="tac tac2">
+                    <div id="ZDRQ" style="height:200px"></div>
+                </div>
+            </div>
+            <div class="map">
+                <div class="hz" id="main" style="height: 500px"></div>
+            </div>
+            <div class="slide">
+                <div class="time">
+                    <div class="week">日期</div>
+                    <div class="hour">2017年5月1日</div>
+                </div>
+                <div class="tac tac1">
+                    <div class="title">行政双公示</div>
+                </div>
+                <div class="tac tac2">
+                    <div id="ABC" style="height:200px"></div>
+                </div>
+            </div>
+        </session>
+        <session class="statistic">
+            <div class="tac tac3">
+                <div id="CXQK" style="height:200px"></div>
+            </div>
+            <div class="tac tac3">
+                <div id="GJQK" style="height:200px"></div>
+            </div>
+        </session>
+    </div>
+
     <script src="bundle.js"></script>
+
 </body>
 </html>

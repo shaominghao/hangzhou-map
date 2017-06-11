@@ -1,0 +1,85 @@
+a {
+  color: #fff;
+}
+
+.m-doc {
+  width: 1920px;
+  height: 1080px;
+  color: #fff;
+}
+
+.m-doc img {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: -1;
+}
+
+.m-doc header {
+  display: flex;
+  height: 40px;
+}
+
+.m-doc .tac .title{
+  padding: 20px 0px;
+  line-height: 30px;
+  font-size: 24px;
+  text-align: center;
+}
+.m-doc header .userinfo {
+  width: 400px;
+}
+
+.m-doc header .opt {
+  width: 400px;
+  text-align: right;
+}
+
+.m-doc header .topic {
+  flex: 1;
+}
+
+.m-doc .main {
+  padding: 40px 40px;
+  display: flex;
+  height: 700px;
+}
+
+.m-doc .main .slide {
+  width: 300px;
+}
+
+.m-doc .slide .time {
+  height: 100px;
+}
+
+.m-doc .slide .week {
+  line-height: 40px;
+  padding-left: 40px;
+  font-size: 24px;
+}
+
+.m-doc .slide .hour {
+  line-height: 50px;
+  padding-left: 50px;
+  font-size: 30px;
+}
+
+.m-doc .main .tac1, .m-doc .main .tac2 {
+  margin-top: 20px;
+  width: 100%;
+  height: 290px;
+}
+
+.m-doc .main .map {
+  width: 1240px;
+}
+
+.m-doc .statistic{
+  display: flex;
+  justify-content: space-between;
+}
+.m-doc .statistic .tac{
+  width: 50%;
+  height: 210px;
+}

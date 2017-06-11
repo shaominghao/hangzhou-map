@@ -132,28 +132,34 @@ chart3.setOption({
 //查询情况
 var chart4 = echarts.init(document.getElementById('CXQK'));
 chart4.setOption({
+    title: {
+        text: '查询情况',
+        x: 'center',
+        padding:[20,0,0,10],
+        textStyle: {
+            fontSize: 24,
+            fontWeight: 'bolder',
+            color: '#fff'
+        }
+    },
+    color: ['#00d200', '#ff1111', '#bb4800'],
     tooltip: {
         trigger: 'axis'
     },
     legend: {
-        data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']
-    },
-    toolbox: {
-        show: true,
-        feature: {
-            mark: {show: true},
-            dataView: {show: true, readOnly: false},
-            magicType: {show: true, type: ['line', 'bar', 'stack', 'tiled']},
-            restore: {show: true},
-            saveAsImage: {show: true}
-        }
+        padding:[20,20,10,10],
+        x: 'right',
+        textStyle: {
+            color: '#fff'
+        },
+        data: ['现场', '网站', 'APP']
     },
     calculable: true,
     xAxis: [
         {
             type: 'category',
             boundaryGap: false,
-            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
         }
     ],
     yAxis: [
@@ -163,34 +169,29 @@ chart4.setOption({
     ],
     series: [
         {
-            name: '邮件营销',
+            symbol:'circle',
+            smooth: true,
+            name: '现场',
             type: 'line',
-            stack: '总量',
-            data: [120, 132, 101, 134, 90, 230, 210]
+            stack: '总量1',
+            data: [5, 6, 6.5, 8, 12, 24]
         },
         {
-            name: '联盟广告',
+            symbol:'circle',
+            smooth: true,
+            name: '网站',
             type: 'line',
-            stack: '总量',
-            data: [220, 182, 191, 234, 290, 330, 310]
+            stack: '总量2',
+            data: [12, 13, 14, 16, 18, 20]
         },
         {
-            name: '视频广告',
+            symbol:'circle',
+            symbolSize:0,
+            smooth: true,
+            name: 'APP',
             type: 'line',
-            stack: '总量',
-            data: [150, 232, 201, 154, 190, 330, 410]
-        },
-        {
-            name: '直接访问',
-            type: 'line',
-            stack: '总量',
-            data: [320, 332, 301, 334, 390, 330, 320]
-        },
-        {
-            name: '搜索引擎',
-            type: 'line',
-            stack: '总量',
-            data: [820, 932, 901, 934, 1290, 1330, 1320]
+            stack: '总量3',
+            data: [24, 20, 18, 16.5, 12, 8]
         }
     ]
 

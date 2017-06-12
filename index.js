@@ -171,11 +171,25 @@ chart4.setOption({
             splitArea: {
                 show: true
             },
+            axisLabel : {
+                formatter: '{value} 万'
+            }
+        },
+        {
+            splitLine: {
+                show: false
+            },
+            type : 'value',
+            axisLabel : {
+                formatter: '{value} 万'
+            }
         }
     ],
     series: [
         {
             symbol:'circle',
+            symbolSize:0,
+            yAxisIndex: 0,
             smooth: true,
             name: '现场',
             type: 'line',
@@ -184,6 +198,8 @@ chart4.setOption({
         },
         {
             symbol:'circle',
+            symbolSize:0,
+            yAxisIndex: 0,
             smooth: true,
             name: '网站',
             type: 'line',
@@ -193,11 +209,12 @@ chart4.setOption({
         {
             symbol:'circle',
             symbolSize:0,
+            yAxisIndex: 1,
             smooth: true,
             name: 'APP',
             type: 'line',
             stack: '总量3',
-            data: [24, 20, 18, 16.5, 12, 8]
+            data: [240, 400, 380, 650, 800, 950]
         }
     ]
 
@@ -234,6 +251,9 @@ chart5.setOption({
     legend: {
         data: ['数量', '质量'],
         padding:[20,60,10,10],
+        textStyle: {
+            color: '#fff'
+        },
         x: 'right'
     },
     xAxis: [
@@ -251,16 +271,16 @@ chart5.setOption({
                 show: true
             },
             type: 'value',
-            name: '数量',
+            //name: '数量',
             axisLabel: {
-                formatter: '{value}'
+                formatter: '{value} 万'
             }
         }, {
             splitLine: {
                 show: false
             },
             type : 'value',
-            name : '质量',
+            //name : '质量',
             axisLabel : {
                 formatter: '{value} %'
             }

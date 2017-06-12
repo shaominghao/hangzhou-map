@@ -146,6 +146,9 @@ chart4.setOption({
     tooltip: {
         trigger: 'axis'
     },
+    textStyle: {
+        color: "#ffffff",
+    },
     legend: {
         padding:[20,20,10,10],
         x: 'right',
@@ -164,7 +167,10 @@ chart4.setOption({
     ],
     yAxis: [
         {
-            type: 'value'
+            type: 'value',
+            splitArea: {
+                show: true
+            },
         }
     ],
     series: [
@@ -201,37 +207,58 @@ chart4.setOption({
 //归集情况
 var chart5 = echarts.init(document.getElementById('GJQK'));
 chart5.setOption({
+    title: [{
+        text: '归集情况',
+        x: 'center',
+        padding:[20,0,0,10],
+        textStyle: {
+            fontSize: 24,
+            fontWeight: 'bolder',
+            color: '#fff'
+        }
+    },{
+        text: '上月总归集数：1934.5万',
+        padding:[20,0,0,100],
+        textStyle: {
+            fontSize: 12,
+            color: '#ddd'
+        }
+    }],
+    textStyle: {
+        color: "#ffffff",
+    },
     tooltip: {
         trigger: 'axis'
     },
-    toolbox: {
-        show: true,
-        feature: {
-            mark: {show: true},
-            dataView: {show: true, readOnly: false},
-            magicType: {show: true, type: ['line', 'bar']},
-            restore: {show: true},
-            saveAsImage: {show: true}
-        }
-    },
     calculable: true,
     legend: {
-        data: ['数量', '质量']
+        data: ['数量', '质量'],
+        padding:[20,60,10,10],
+        x: 'right'
     },
     xAxis: [
         {
             type: 'category',
-            data: ['市公积金中心', '人力社保局', '公安局', '市场监管局', '地税局', '国税局', '市建委', '民政局', '国土局', '房管局']
+            data: ['市公积金中心', '人力社保局', '公安局', '市场监管局', '地税局', '国税局', '市建委', '民政局', '国土局', '房管局'],
+            textStyle: {
+                color: '#fff'
+            }
         }
     ],
     yAxis: [
         {
+            splitArea: {
+                show: true
+            },
             type: 'value',
             name: '数量',
             axisLabel: {
                 formatter: '{value}'
             }
         }, {
+            splitLine: {
+                show: false
+            },
             type : 'value',
             name : '质量',
             axisLabel : {
@@ -243,9 +270,26 @@ chart5.setOption({
         {
             name: '数量',
             type: 'bar',
-            data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0]
+            barWidth: 12,
+            data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0],
+            itemStyle: {
+                normal: {
+                    color: function(params) {
+                        // build a color map as your need.
+                        var colorList = [
+                            '#C1232B','#B5C334','#FCCE10','#E87C25','#27727B',
+                            '#FE8463','#9BCA63','#FAD860','#F3A43B','#60C0DD',
+                            '#D7504B','#C6E579','#F4E001','#F0805A','#26C0C0'
+                        ];
+                        return colorList[params.dataIndex]
+                    }
+                }
+            }
         },
         {
+            color: [ '#bb4800'],
+            symbol:'circle',
+            symbolSize:8,
             name: '质量',
             type: 'line',
             yAxisIndex: 1,

@@ -1,5 +1,6 @@
 
 .m-doc {
+  position: relative;
   width: 1920px;
   height: 1080px;
   color: #fff;
@@ -10,18 +11,31 @@
     z-index: -1;
   }
   header {
+    position: relative;
     display: flex;
-    height: 40px;
+    justify-content: space-between;
+    height: 50px;
+    line-height: 50px;
+    padding: 0px 20px;
     .userinfo {
-      width: 400px;
     }
     .opt {
-      width: 400px;
       text-align: right;
+      a{
+        display: inline-block;
+        margin: 0px 10px;
+      }
     }
-    .topic {
-      flex: 1;
-    }
+  }
+  .notice{
+    position: absolute;
+    width: 870px;
+    height: 40px;
+    line-height: 40px;
+    top: 90px;
+    left: 50%;
+    margin-left: -435px;
+    text-align: center
   }
   .tac {
     .title{
@@ -32,7 +46,7 @@
     }
   }
   .main {
-    padding: 40px 40px;
+    padding: 38px 47px;
     display: flex;
     height: 700px;
     .slide {
@@ -40,21 +54,73 @@
       .time {
         height: 100px;
       }
-      .week {
-        line-height: 40px;
-        padding-left: 40px;
+      .week,.date {
+        line-height: 38px;
         font-size: 24px;
       }
-      .hour {
+      .week{
+        padding-left: 48px;
+      }
+      .date{
+        padding-right: 48px;
+        text-align: right;
+      }
+      .hour,.day {
         line-height: 50px;
-        padding-left: 50px;
+        text-align: center;
         font-size: 30px;
+      }
+      .hour{
+        letter-spacing: 5px;
+        padding-left: 40px;
+      }
+      .day{
+        padding-right: 40px;
       }
     }
     .tac1,.tac2{
       margin-top: 20px;
       width: 100%;
       height: 290px;
+    }
+    .tac1{
+      position: relative;
+      .red,.black{
+        position: absolute;
+        left: 172px;
+        line-height: 20px;
+        strong{
+          padding-left: 5px;
+        }
+      }
+      .red{
+        top:72px;
+        strong{
+          color: red;
+        }
+      }
+      .black{
+        top:92px;
+        strong{
+          color: yellow;
+        }
+      }
+      .public{
+        position: absolute;
+        display: flex;
+        top:170px;
+        left: 50%;
+        margin-left: -110px;
+        width: 220px;
+        height: 100px;
+        &>div{
+          width: 50%;
+        }
+        p{
+          margin: 20px;
+          text-align: center;
+        }
+      }
     }
     .map {
       position: relative;

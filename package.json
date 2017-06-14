@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "webpack-dev-server --content-base --open --inline --hot --compress --history-api-fallback --port 9090 --config webpack.dev.config.js",
-    "build:style": "gulp --gulpfile build/gulpfile.js"
+    "start": "webpack-dev-server --content-base --open --inline --hot --compress --history-api-fallback --port 9090 --config webpack.dev.config.js",
+    "build:style": "gulp --gulpfile build/gulpfile.js",
+    "dev":"npm run build:style & npm run start"
   },
   "author": "",
   "license": "ISC",

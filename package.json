@@ -5,7 +5,7 @@
   "scripts": {
     "start": "webpack-dev-server --content-base --open --inline --hot --compress --history-api-fallback --port 9090 --config webpack.dev.config.js",
     "build:style": "gulp --gulpfile build/gulpfile.js",
-    "dev":"npm run build:style & npm run start"
+    "dev": "npm run build:style & npm run start"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +20,7 @@
     "gulp-clean-css": "^2.0.13",
     "gulp-less": "^3.1.0",
     "gulp-marked": "^1.0.0",
+    "gulp-px2rem": "^1.0.11",
     "gulp-rename": "^1.2.2",
     "gulp-watch": "^4.3.11",
     "less": "^2.7.1",

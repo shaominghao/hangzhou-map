@@ -3,6 +3,7 @@ var cleanCSS = require('gulp-clean-css');
 var less = require('gulp-less');
 var rename = require('gulp-rename');
 var watch = require('gulp-watch');
+var px2rem = require('gulp-px2rem');
 
 // 编译less
 gulp.task('css', function () {
@@ -13,8 +14,15 @@ gulp.task('css', function () {
         .pipe(gulp.dest('../dist/styles'));
 });
 
+gulp.task('px2rem',function () {
+    gulp.src('../dist/styles/index.css')
+        .pipe(px2rem())
+        .pipe(rename('index.debug.css'))
+        .pipe(gulp.dest('../dist/styles'));
+});
+
 gulp.task('watch',function () {
     gulp.watch('../src/styles/*.less',['css'])
 });
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['watch','px2rem']);

@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>杭州地图</title>
-    <link rel="stylesheet" href="./dist/styles/index.css">
+    <link rel="stylesheet" href="./dist/styles/index.debug.css">
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 16 * (clientWidth / 1920) + 'px';
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
 </head>
 <body>
     <div class="m-doc">
-        <img src="./res/bg.png" width="1920" height="1080" alt="">
+        <img src="./res/bg.png" alt="">
         <header>
             <div class="userinfo">用户名：中心管理员|用户部门：系统管理部</div>
             <div class="opt">
@@ -30,7 +44,7 @@
                     <div class="black">黑<strong>842</strong></div>
                 </div>
                 <div class="tac tac2">
-                    <div id="ZDRQ" style="height:290px"></div>
+                    <div id="ZDRQ"></div>
                 </div>
             </div>
             <div class="map">
@@ -39,7 +53,7 @@
                     <div class="total"><span>归集自然人</span><span><b>1243.4</b>万</span></div>
                     <div class="total"><span>历史归集数</span><span><b>15.3</b>亿</span></div>
                 </div>
-                <div class="hz" id="main" style="height: 700px"></div>
+                <div class="hz" id="main"></div>
             </div>
             <div class="slide">
                 <div class="time">
@@ -60,16 +74,16 @@
                     </div>
                 </div>
                 <div class="tac tac2">
-                    <div id="ABC" style="height:290px"></div>
+                    <div id="ABC"></div>
                 </div>
             </div>
         </session>
         <session class="statistic">
             <div class="tac tac3">
-                <div id="CXQK" style="height:200px"></div>
+                <div id="CXQK" ></div>
             </div>
             <div class="tac tac3">
-                <div id="GJQK" style="height:200px"></div>
+                <div id="GJQK"></div>
             </div>
         </session>
     </div>

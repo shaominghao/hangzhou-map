@@ -104,6 +104,20 @@ chart2.setOption({
                 width: 1,
                 type: 'solid'
             },
+            splitLine:{
+                lineStyle:{
+                    color: ['#48b'],
+                    width: 1,
+                    type: 'solid'
+                }
+            },
+            axisLine:{
+                lineStyle:{
+                    color: '#48b',
+                    width: 1,
+                    type: 'solid'
+                }
+            },
             splitNumber: 5,
             max: 25,
             nameTextStyle: {
@@ -120,6 +134,20 @@ chart2.setOption({
     yAxis: [
         {
             type: 'category',
+            axisLine:{
+                lineStyle:{
+                    color: '#48b',
+                    width: 1,
+                    type: 'solid'
+                }
+            },
+            splitLine:{
+                lineStyle:{
+                    color: ['#48b'],
+                    width: 1,
+                    type: 'solid'
+                }
+            },
             data: ['公务员', '律师', '教师', '医护'],
             axisLabel: {
                 textStyle: {
@@ -343,6 +371,9 @@ chart5.setOption({
             //name: '数量',
             axisLabel: {
                 formatter: '{value} 万'
+            },
+            axisLine:{
+                show:false
             }
         }, {
             splitLine: {
@@ -352,6 +383,9 @@ chart5.setOption({
             //name : '质量',
             axisLabel: {
                 formatter: '{value} %'
+            },
+            axisLine:{
+                show:false
             }
         }
     ],

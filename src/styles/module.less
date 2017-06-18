@@ -39,10 +39,11 @@
   }
   .tac {
     .title {
-      padding: 20px 0px;
+      padding: 20px 0px 15px 0px;
       line-height: 30px;
       font-size: 24px;
       text-align: center;
+      box-sizing: border-box;
     }
   }
   .main {
@@ -131,8 +132,9 @@
     }
     .map {
       position: relative;
-      width: 1240px;
+      flex:1;
       padding: 60px 20px 0px 20px;
+      box-sizing: border-box;
       .tj {
         position: absolute;
         top: 80px;
@@ -151,6 +153,7 @@
         display: flex;
         justify-content: space-between;
         background: url("./../../res/total.png");
+        background-size: 100% auto;
         span {
           line-height: 50px;
           color: #fff;
@@ -164,6 +167,8 @@
   }
   .statistic {
     display: flex;
+    padding: 0px 47px;
+    box-sizing: border-box;
     justify-content: space-between;
     .tac {
       width: 50%;

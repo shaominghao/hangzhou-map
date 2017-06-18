@@ -1,14 +1,72 @@
 // 引入 ECharts 主模块
 var echarts = require('echarts');
-var data = require('./hangzhou.json');
-console.log(data);
-echarts.registerMap('hangzhou', data);
+var hzmapdata = require('./hangzhou.json');
+var data = require('./data.json');
+echarts.registerMap('hangzhou', hzmapdata);
 //HZ
-var chart = echarts.init(document.getElementById('main'));
-chart.setOption({
+var chart1 = echarts.init(document.getElementById('main'));
+chart1.setOption({
+    tooltip: {
+        trigger: 'item',
+        backgroundColor: 'rgba(3,72,123,1)',
+        borderColor: '#03487b',
+        borderRadius: 8,
+        borderWidth: 2,
+        padding: 10,    // [5, 10, 15, 20]
+        position: function (p) {
+            // 位置回调
+            // console.log && console.log(p);
+            return [p[0] + 10, p[1] - 10];
+        },
+        formatter: function (params, ticket, callback) {
+            console.log(params)
+            // var res = 'Function formatter : <br/>' + params.name;
+            // for (var i = 0, l = params.length; i < l; i++) {
+            //     res += '<br/>' + params[i].seriesName + ' : ' + params[i].value;
+            // }
+            var obj = data[params.name];
+            var res = '<div>' + params.name + '</div><div>企业：' + obj.enterprise + '</div><div>自然人：' + obj.people + '</div>'
+            setTimeout(function () {
+                // 仅为了模拟异步回调
+                callback(ticket, res);
+            }, 50);
+            return res;
+        }
+    },
+    legend: {
+        orient: 'vertical',
+        left: 'left',
+        tooltip: {
+            show: true
+        }
+    },
+    visualMap: {
+        min: 0,
+        max: 2500,
+        show: false,
+        inRange: {
+            color: ['#ff7980', '#ffb59a', '#ffd6b8']
+        },
+        formater: 'aaaa{1000-2000}'
+    },
     series: [{
         type: 'map',
-        map: 'hangzhou'
+        map: 'hangzhou',
+        roam: false,
+        label: {
+            normal: {
+                show: false
+            },
+            emphasis: {
+                show: true
+            }
+        },
+        itemStyle: {
+            normal: {
+                areaColor: '#03487b',
+                borderColor: '#03487b'
+            }
+        }
     }]
 });
 //ZDRQ
@@ -18,19 +76,22 @@ chart2.setOption({
         show: true,
         text: "重点人群",
         x: 'center',
-        padding:[30,0,0,10],
+        padding: [10, 0, 0, 10],
         textStyle: {
-            fontSize: 24,
-            fontWeight: 'bolder',
+            fontSize: 18,
+            fontWeight: 'normal',
             color: '#fff'
         }
     },
     //调整坐标轴的位置
-    grid:{
-        x:'60px',
-        y:'80px',
-        x2:'60px',
-        y2:'30px'
+    grid: {
+        x: '60px',
+        y: '40px',
+        x2: '20px',
+        y2: '40px'
+    },
+    tooltip: {
+        trigger: 'axis'
     },
     xAxis: [
         {
@@ -48,10 +109,10 @@ chart2.setOption({
             nameTextStyle: {
                 color: "#fff"
             },
-            axisLabel : {
+            axisLabel: {
                 formatter: '{value} 万',
-                textStyle:{
-                    color:'#fff'
+                textStyle: {
+                    color: '#fff'
                 }
             }
         }
@@ -60,9 +121,9 @@ chart2.setOption({
         {
             type: 'category',
             data: ['公务员', '律师', '教师', '医护'],
-            axisLabel : {
-                textStyle:{
-                    color:'#fff'
+            axisLabel: {
+                textStyle: {
+                    color: '#fff'
                 }
             }
         }
@@ -72,14 +133,19 @@ chart2.setOption({
             name: '2011年',
             type: 'bar',
             data: [1, 7, 21, 20],
-            itemStyle:{
-                barBorderColor:'#fff',
-                barBorderWidth:1,
-                normal:{
-                    color:'red'
+            itemStyle: {
+                normal: {
+                    color: function (params) {
+                        // build a color map as your need.
+                        var colorList = [
+                            '#003df4', '#B5C334', '#FCCE10', '#E87C25'
+                        ];
+                        return colorList[params.dataIndex]
+                    }
                 }
             },
-            barWidth: 10
+            barWidth: 10,
+            barGap: '15%'
         }
     ]
 });
@@ -90,10 +156,10 @@ chart3.setOption({
     title: {
         text: 'ABC三类',
         x: 'center',
-        padding:[30,0,0,10],
+        padding: [10, 20, 20, 10],
         textStyle: {
-            fontSize: 24,
-            fontWeight: 'bolder',
+            fontSize: 18,
+            fontWeight: 'normal',
             color: '#fff'
         }
     },
@@ -101,18 +167,19 @@ chart3.setOption({
         trigger: 'item',
         formatter: "{a} <br/>{b} : {c} ({d}%)"
     },
-    color: ['rgb(254,67,101)','rgb(249,205,173)','rgb(200,200,169)','rgb(131,175,155)'],
+    color: ['#009917', '#fcc100', '#fc4c4c'],
     series: [
         {
-            name:'面积模式',
-            type:'pie',
-            radius : [30, 80],
-            center : ['50%', '60%'],
-            roseType : 'area',
-            data:[
-                {value:50, name:'A类'},
-                {value:70, name:'B类'},
-                {value:90, name:'C类'}
+            name: '面积模式',
+            type: 'pie',
+            radius: ['10%', '40%'],
+            center: ['50%', '50%'],
+            roseType: 'area',
+            selectedOffset: 10,
+            data: [
+                {value: 50, name: 'A类'},
+                {value: 70, name: 'B类'},
+                {value: 90, name: 'C类'}
             ],
             itemStyle: {
                 normal: {
@@ -121,9 +188,11 @@ chart3.setOption({
                         formatter: "{b} \n{c}万 \n{d}%"
                     },
                     labelLine: {
-                        show: true
+                        show: true,
+                        position: 'inner',
+                        distance: 20
                     }
-                },
+                }
             }
         }
     ]
@@ -135,10 +204,10 @@ chart4.setOption({
     title: {
         text: '查询情况',
         x: 'center',
-        padding:[20,0,0,10],
+        padding: [10, 0, 0, 10],
         textStyle: {
-            fontSize: 24,
-            fontWeight: 'bolder',
+            fontSize: 18,
+            fontWeight: 'normal',
             color: '#fff'
         }
     },
@@ -147,10 +216,10 @@ chart4.setOption({
         trigger: 'axis'
     },
     textStyle: {
-        color: "#ffffff",
+        color: "#ffffff"
     },
     legend: {
-        padding:[20,20,10,10],
+        padding: [20, 20, 10, 10],
         x: 'right',
         textStyle: {
             color: '#fff'
@@ -171,7 +240,7 @@ chart4.setOption({
             splitArea: {
                 show: true
             },
-            axisLabel : {
+            axisLabel: {
                 formatter: '{value} 万'
             }
         },
@@ -179,16 +248,16 @@ chart4.setOption({
             splitLine: {
                 show: false
             },
-            type : 'value',
-            axisLabel : {
+            type: 'value',
+            axisLabel: {
                 formatter: '{value} 万'
             }
         }
     ],
     series: [
         {
-            symbol:'circle',
-            symbolSize:0,
+            symbol: 'circle',
+            symbolSize: 0,
             yAxisIndex: 0,
             smooth: true,
             name: '现场',
@@ -197,8 +266,8 @@ chart4.setOption({
             data: [5, 6, 6.5, 8, 12, 24]
         },
         {
-            symbol:'circle',
-            symbolSize:0,
+            symbol: 'circle',
+            symbolSize: 0,
             yAxisIndex: 0,
             smooth: true,
             name: '网站',
@@ -207,8 +276,8 @@ chart4.setOption({
             data: [12, 13, 14, 16, 18, 20]
         },
         {
-            symbol:'circle',
-            symbolSize:0,
+            symbol: 'circle',
+            symbolSize: 0,
             yAxisIndex: 1,
             smooth: true,
             name: 'APP',
@@ -227,15 +296,15 @@ chart5.setOption({
     title: [{
         text: '归集情况',
         x: 'center',
-        padding:[20,0,0,10],
+        padding: [10, 0, 0, 10],
         textStyle: {
-            fontSize: 24,
-            fontWeight: 'bolder',
+            fontSize: 18,
+            fontWeight: 'normal',
             color: '#fff'
         }
-    },{
+    }, {
         text: '上月总归集数：1934.5万',
-        padding:[20,0,0,100],
+        padding: [20, 0, 0, 100],
         textStyle: {
             fontSize: 12,
             color: '#ddd'
@@ -250,7 +319,7 @@ chart5.setOption({
     calculable: true,
     legend: {
         data: ['数量', '质量'],
-        padding:[20,60,10,10],
+        padding: [20, 60, 10, 10],
         textStyle: {
             color: '#fff'
         },
@@ -279,9 +348,9 @@ chart5.setOption({
             splitLine: {
                 show: false
             },
-            type : 'value',
+            type: 'value',
             //name : '质量',
-            axisLabel : {
+            axisLabel: {
                 formatter: '{value} %'
             }
         }
@@ -290,16 +359,16 @@ chart5.setOption({
         {
             name: '数量',
             type: 'bar',
-            barWidth: 12,
+            barWidth: 10,
             data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0],
             itemStyle: {
                 normal: {
-                    color: function(params) {
+                    color: function (params) {
                         // build a color map as your need.
                         var colorList = [
-                            '#C1232B','#B5C334','#FCCE10','#E87C25','#27727B',
-                            '#FE8463','#9BCA63','#FAD860','#F3A43B','#60C0DD',
-                            '#D7504B','#C6E579','#F4E001','#F0805A','#26C0C0'
+                            '#C1232B', '#B5C334', '#FCCE10', '#E87C25', '#27727B',
+                            '#FE8463', '#9BCA63', '#FAD860', '#F3A43B', '#60C0DD',
+                            '#D7504B', '#C6E579', '#F4E001', '#F0805A', '#26C0C0'
                         ];
                         return colorList[params.dataIndex]
                     }
@@ -307,9 +376,9 @@ chart5.setOption({
             }
         },
         {
-            color: [ '#bb4800'],
-            symbol:'circle',
-            symbolSize:8,
+            color: ['#bb4800'],
+            symbol: 'circle',
+            symbolSize: 8,
             name: '质量',
             type: 'line',
             yAxisIndex: 1,
@@ -319,3 +388,13 @@ chart5.setOption({
 
 });
 
+//用于使chart自适应高度和宽度
+window.onload = function () {
+    //setTimeout(function () {
+    chart1.resize();
+    chart2.resize();
+    chart3.resize();
+    chart4.resize();
+    chart5.resize();
+    //},500);
+};

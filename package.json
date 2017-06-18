@@ -5,7 +5,8 @@
   "scripts": {
     "start": "webpack-dev-server --content-base --open --inline --hot --compress --history-api-fallback --port 9090 --config webpack.dev.config.js",
     "build:style": "gulp --gulpfile build/gulpfile.js",
-    "dev": "npm run build:style & npm run start"
+    "dev": "npm run build:style & npm run start",
+    "release":"npm run build:style  & webpack --config webpack.release.config.js"
   },
   "author": "",
   "license": "ISC",

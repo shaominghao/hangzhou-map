@@ -67,8 +67,8 @@ chart1.setOption({
         },
         itemStyle: {
             normal: {
-                areaColor: '#03487b',
-                borderColor: '#03487b'
+                areaColor: '#0e2b43',
+                borderColor: '#296bac'
             },
             emphasis:{
                 label:{
@@ -96,7 +96,7 @@ chart2.setOption({
     },
     //调整坐标轴的位置
     grid: {
-        x: '60px',
+        x: '50px',
         y: '40px',
         x2: '20px',
         y2: '40px',
@@ -119,15 +119,16 @@ chart2.setOption({
                 type: 'solid'
             },
             splitLine: {
+                show:true,
                 lineStyle: {
-                    color: ['#48b'],
+                    color: ['#265d89'],
                     width: 1,
                     type: 'solid'
                 }
             },
             axisLine: {
                 lineStyle: {
-                    color: '#48b',
+                    color: '#265d89',
                     width: 1,
                     type: 'solid'
                 }
@@ -138,7 +139,7 @@ chart2.setOption({
                 color: "#fff"
             },
             axisLabel: {
-                formatter: '{value} 万',
+                formatter: '{value}万',
                 textStyle: {
                     color: '#fff'
                 }
@@ -157,8 +158,9 @@ chart2.setOption({
                 }
             },
             splitLine: {
+                show:true,
                 lineStyle: {
-                    color: ['#48b'],
+                    color: ['#265d89'],
                     width: 1,
                     type: 'solid'
                 }
@@ -181,7 +183,7 @@ chart2.setOption({
                     color: function (params) {
                         // build a color map as your need.
                         var colorList = [
-                            '#003df4', '#B5C334', '#FCCE10', '#E87C25'
+                            '#003df4', '#B5C334', '#FCCE10', '#186420'
                         ];
                         return colorList[params.dataIndex]
                     }
@@ -215,7 +217,7 @@ chart3.setOption({
         {
             name: '面积模式',
             type: 'pie',
-            radius: ['10%', '40%'],
+            radius: ['20%', '55%'],
             center: ['50%', '50%'],
             roseType: 'area',
             selectedOffset: 10,
@@ -233,7 +235,7 @@ chart3.setOption({
                     labelLine: {
                         show: true,
                         position: 'inner',
-                        distance: 20
+                        length: -5
                     }
                 }
             }
@@ -254,7 +256,7 @@ chart4.setOption({
             color: '#fff'
         }
     },
-    color: ['#00d200', '#ff1111', '#bb4800'],
+    color: ['#00d200', '#ff1111', '#fc4b76'],
     //调整坐标轴的位置
     grid: {
         x: '60px',
@@ -295,6 +297,13 @@ chart4.setOption({
                 }
 
             },
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: '#48b',
+                    width: 1
+                }
+            },
             boundaryGap: false,
             data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
         }
@@ -304,18 +313,38 @@ chart4.setOption({
             type: 'value',
             axisTick: false,
             splitArea: {
-                show: true
+                show: true,
+                areaStyle:{
+                    color: [
+                        '#205586',
+                        '#1a4877'
+                    ]
+                }
+            },
+            splitLine: {
+                show:true,
+                lineStyle: {
+                    color: ['#48b'],
+                    width: 1,
+                    type: 'solid'
+                }
+            },
+            axisLine: {
+                show: false
             },
             axisLabel: {
                 formatter: '{value} 万'
             }
         },
         {
+            type: 'value',
             splitLine: {
                 show: false
             },
             axisTick: false,
-            type: 'value',
+            axisLine: {
+                show: false
+            },
             axisLabel: {
                 formatter: '{value} 万'
             }
@@ -410,6 +439,13 @@ chart5.setOption({
                 width: 1,
                 type: 'solid'
             },
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: '#48b',
+                    width: 1
+                }
+            },
             data: ['市公积金', '社保局', '公安局', '监管局', '地税局', '国税局', '市建委', '民政局', '国土局', '房管局'],
             textStyle: {
                 color: '#fff'
@@ -428,6 +464,23 @@ chart5.setOption({
             type: 'value',
             splitArea: {
                 show: true
+            },
+            splitLine: {
+                show:true,
+                lineStyle: {
+                    color: ['#48b'],
+                    width: 1,
+                    type: 'solid'
+                }
+            },
+            splitArea: {
+                show: true,
+                areaStyle:{
+                    color: [
+                        '#205586',
+                        '#1a4877'
+                    ]
+                }
             },
             axisTick: false,
             //name: '数量',

@@ -53,18 +53,29 @@ chart1.setOption({
         type: 'map',
         map: 'hangzhou',
         roam: false,
+        scaleLimit:{
+            min:1,
+            max:3
+        },
         label: {
             normal: {
                 show: false
             },
             emphasis: {
-                show: true
+                show: false
             }
         },
         itemStyle: {
             normal: {
                 areaColor: '#03487b',
                 borderColor: '#03487b'
+            },
+            emphasis:{
+                label:{
+                    show:false
+                },
+                color:'red',
+                borderColor:'#48b'
             }
         }
     }]
@@ -76,7 +87,7 @@ chart2.setOption({
         show: true,
         text: "重点人群",
         x: 'center',
-        padding: [10, 0, 0, 10],
+        padding: [15, 0, 0, 10],
         textStyle: {
             fontSize: 18,
             fontWeight: 'normal',
@@ -88,7 +99,9 @@ chart2.setOption({
         x: '60px',
         y: '40px',
         x2: '20px',
-        y2: '40px'
+        y2: '40px',
+        borderColor: '#ccc',
+        borderWidth: 1
     },
     tooltip: {
         trigger: 'axis'
@@ -98,21 +111,22 @@ chart2.setOption({
             type: 'value',
             boundaryGap: [0, 0],
             show: true,
+            axisTick: false,
             onZero: true,
             lineStyle: {
                 color: '#48b',
                 width: 1,
                 type: 'solid'
             },
-            splitLine:{
-                lineStyle:{
+            splitLine: {
+                lineStyle: {
                     color: ['#48b'],
                     width: 1,
                     type: 'solid'
                 }
             },
-            axisLine:{
-                lineStyle:{
+            axisLine: {
+                lineStyle: {
                     color: '#48b',
                     width: 1,
                     type: 'solid'
@@ -134,15 +148,16 @@ chart2.setOption({
     yAxis: [
         {
             type: 'category',
-            axisLine:{
-                lineStyle:{
+            axisTick: false,
+            axisLine: {
+                lineStyle: {
                     color: '#48b',
                     width: 1,
                     type: 'solid'
                 }
             },
-            splitLine:{
-                lineStyle:{
+            splitLine: {
+                lineStyle: {
                     color: ['#48b'],
                     width: 1,
                     type: 'solid'
@@ -184,7 +199,7 @@ chart3.setOption({
     title: {
         text: 'ABC三类',
         x: 'center',
-        padding: [10, 20, 20, 10],
+        padding: [15, 20, 20, 10],
         textStyle: {
             fontSize: 18,
             fontWeight: 'normal',
@@ -232,7 +247,7 @@ chart4.setOption({
     title: {
         text: '查询情况',
         x: 'center',
-        padding: [10, 0, 0, 10],
+        padding: [15, 0, 0, 10],
         textStyle: {
             fontSize: 18,
             fontWeight: 'normal',
@@ -240,6 +255,15 @@ chart4.setOption({
         }
     },
     color: ['#00d200', '#ff1111', '#bb4800'],
+    //调整坐标轴的位置
+    grid: {
+        x: '60px',
+        y: '40px',
+        x2: '60px',
+        y2: '20px',
+        borderColor: '#ccc',
+        borderWidth: 1
+    },
     tooltip: {
         trigger: 'axis'
     },
@@ -258,6 +282,19 @@ chart4.setOption({
     xAxis: [
         {
             type: 'category',
+            lineStyle: {
+                color: '#48b',
+                width: 1,
+                type: 'solid'
+            },
+            axisTick: {
+                show: true,
+                lineStyle: {
+                    color: '#48b',
+                    width: 1
+                }
+
+            },
             boundaryGap: false,
             data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
         }
@@ -265,6 +302,7 @@ chart4.setOption({
     yAxis: [
         {
             type: 'value',
+            axisTick: false,
             splitArea: {
                 show: true
             },
@@ -276,6 +314,7 @@ chart4.setOption({
             splitLine: {
                 show: false
             },
+            axisTick: false,
             type: 'value',
             axisLabel: {
                 formatter: '{value} 万'
@@ -324,7 +363,7 @@ chart5.setOption({
     title: [{
         text: '归集情况',
         x: 'center',
-        padding: [10, 0, 0, 10],
+        padding: [15, 0, 0, 10],
         textStyle: {
             fontSize: 18,
             fontWeight: 'normal',
@@ -338,8 +377,17 @@ chart5.setOption({
             color: '#ddd'
         }
     }],
+    //调整坐标轴的位置
+    grid: {
+        x: '60px',
+        y: '40px',
+        x2: '60px',
+        y2: '20px',
+        borderColor: '#ccc',
+        borderWidth: 1
+    },
     textStyle: {
-        color: "#ffffff",
+        color: "#ffffff"
     },
     tooltip: {
         trigger: 'axis'
@@ -356,36 +404,51 @@ chart5.setOption({
     xAxis: [
         {
             type: 'category',
-            data: ['市公积金中心', '人力社保局', '公安局', '市场监管局', '地税局', '国税局', '市建委', '民政局', '国土局', '房管局'],
+            axisTick: false,
+            lineStyle: {
+                color: '#48b',
+                width: 1,
+                type: 'solid'
+            },
+            data: ['市公积金', '社保局', '公安局', '监管局', '地税局', '国税局', '市建委', '民政局', '国土局', '房管局'],
             textStyle: {
                 color: '#fff'
+            },
+            axisLabel: {
+                interval: 0
+                // rotate: 60,//60度角倾斜显示
+                // formatter:function(val) {
+                //     return val.split("").join("\n"); //横轴信息文字竖直显示
+                // }
             }
         }
     ],
     yAxis: [
         {
+            type: 'value',
             splitArea: {
                 show: true
             },
-            type: 'value',
+            axisTick: false,
             //name: '数量',
             axisLabel: {
                 formatter: '{value} 万'
             },
-            axisLine:{
-                show:false
+            axisLine: {
+                show: false
             }
         }, {
             splitLine: {
                 show: false
             },
+            axisTick: false,
             type: 'value',
             //name : '质量',
             axisLabel: {
                 formatter: '{value} %'
             },
-            axisLine:{
-                show:false
+            axisLine: {
+                show: false
             }
         }
     ],
@@ -401,8 +464,7 @@ chart5.setOption({
                         // build a color map as your need.
                         var colorList = [
                             '#C1232B', '#B5C334', '#FCCE10', '#E87C25', '#27727B',
-                            '#FE8463', '#9BCA63', '#FAD860', '#F3A43B', '#60C0DD',
-                            '#D7504B', '#C6E579', '#F4E001', '#F0805A', '#26C0C0'
+                            '#FE8463', '#9BCA63', '#FAD860', '#F3A43B', '#60C0DD'
                         ];
                         return colorList[params.dataIndex]
                     }

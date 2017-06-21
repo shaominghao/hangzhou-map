@@ -74,6 +74,7 @@ chart1.setOption({
                 label:{
                     show:false
                 },
+                areaColor:"#0186e1",
                 color:'red',
                 borderColor:'#48b'
             }

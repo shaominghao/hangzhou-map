@@ -74,7 +74,7 @@ chart1.setOption({
                 label:{
                     show:false
                 },
-                areaColor:"#0186e1",
+                // areaColor:"#0186e1",
                 color:'red',
                 borderColor:'#48b'
             }
@@ -105,7 +105,7 @@ chart2.setOption({
         borderWidth: 1
     },
     tooltip: {
-        trigger: 'axis'
+        // trigger: 'axis'
     },
     xAxis: [
         {
@@ -268,7 +268,7 @@ chart4.setOption({
         borderWidth: 1
     },
     tooltip: {
-        trigger: 'axis'
+        // trigger: 'axis'
     },
     textStyle: {
         color: "#ffffff"
@@ -420,7 +420,7 @@ chart5.setOption({
         color: "#ffffff"
     },
     tooltip: {
-        trigger: 'axis'
+        // trigger: 'axis'
     },
     calculable: true,
     legend: {

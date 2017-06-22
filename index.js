@@ -268,7 +268,10 @@ chart4.setOption({
         borderWidth: 1
     },
     tooltip: {
-        // trigger: 'axis'
+        trigger: 'axis',
+        axisPointer:{
+            type:'none'
+        }
     },
     textStyle: {
         color: "#ffffff"

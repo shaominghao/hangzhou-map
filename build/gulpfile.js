@@ -5,24 +5,17 @@ var rename = require('gulp-rename');
 var watch = require('gulp-watch');
 var px2rem = require('gulp-px2rem');
 
-// 编译less
-gulp.task('css', function () {
-   return gulp.src('../src/styles/index.less')
+gulp.task('less2rem',function () {
+    return gulp.src('../src/styles/index.less')
         .pipe(less())
         .pipe(cleanCSS())
-        .pipe(rename('index.css'))
-        .pipe(gulp.dest('../dist/styles'));
-});
-
-gulp.task('px2rem',['css'],function () {
-    gulp.src('../dist/styles/index.css')
         .pipe(px2rem())
         .pipe(rename('index.debug.css'))
         .pipe(gulp.dest('../dist/styles'));
 });
 
-gulp.task('watch',['css'],function () {
-    gulp.watch('../src/styles/*.less',['css','px2rem'])
+gulp.task('watch',function () {
+    gulp.watch('../src/styles/*.less',['less2rem'])
 });
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['watch','less2rem']);

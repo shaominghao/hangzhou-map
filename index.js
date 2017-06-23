@@ -19,7 +19,7 @@ chart1.setOption({
             return [p[0] + 10, p[1] - 10];
         },
         formatter: function (params, ticket, callback) {
-            console.log(params)
+            // console.log(params)
             // var res = 'Function formatter : <br/>' + params.name;
             // for (var i = 0, l = params.length; i < l; i++) {
             //     res += '<br/>' + params[i].seriesName + ' : ' + params[i].value;
@@ -541,13 +541,18 @@ chart5.setOption({
 
 });
 
-//用于使chart自适应高度和宽度
-window.onload = function () {
-    //setTimeout(function () {
+
+function resize() {
     chart1.resize();
     chart2.resize();
     chart3.resize();
     chart4.resize();
     chart5.resize();
-    //},500);
-};
+}
+//用于使chart自适应高度和宽度
+window.onload = resize;
+window.onresize = function () {
+    setTimeout(function () {
+        resize();
+    },1000)
+}

@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "webpack-dev-server --content-base --open --inline --hot --compress --history-api-fallback --port 9090 --config webpack.dev.config.js",
-    "build:style": "gulp --gulpfile build/gulpfile.js"
+    "start": "webpack-dev-server --content-base --open --inline --hot --compress --history-api-fallback --port 9090 --config webpack.dev.config.js",
+    "build:style": "gulp --gulpfile build/gulpfile.js",
+    "dev": "npm run build:style & npm run start",
+    "release":"npm run build:style  & webpack --config webpack.release.config.js"
   },
   "author": "",
   "license": "ISC",
@@ -14,15 +16,17 @@
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^6.2.4",
-    "webpack": "^2.6.1",
-    "webpack-dev-server": "^2.4.5",
-    "less": "^2.7.1",
-    "less-loader": "^2.2.3",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-clean-css": "^2.0.13",
     "gulp-less": "^3.1.0",
     "gulp-marked": "^1.0.0",
-    "gulp-rename": "^1.2.2"
+    "gulp-px2rem": "^1.0.11",
+    "gulp-rename": "^1.2.2",
+    "gulp-watch": "^4.3.11",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
   }
 }
